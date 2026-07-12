@@ -18,8 +18,7 @@
   body.ar-mode{font-family:'Tajawal',sans-serif;}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,14,39,0.96);backdrop-filter:blur(10px);z-index:50;}
   .nav-left{display:flex;align-items:center;gap:12px;text-decoration:none;}
-  .nav-logo{height:40px;width:40px;overflow:hidden;border-radius:50%;}
-  .nav-logo img{height:100%;width:100%;object-fit:cover;display:block;}
+  .nav-logo{height:40px;overflow:hidden;}
   .nav-logo img{height:100%;display:block;}
   .nav-links{display:flex;align-items:center;gap:4px;}
   .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;transition:color .2s,background .2s;}
@@ -65,6 +64,18 @@
   .cta-box{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px;text-align:center;}
   .cta-box h2{font-size:24px;font-weight:700;margin-bottom:10px;}
   .cta-box p{font-size:14px;color:var(--muted);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;}
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:8px;}
+  .video-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:36px 16px;text-decoration:none;transition:border-color .2s,transform .2s,background .2s;}
+  .video-card:hover{border-color:rgba(242,101,45,0.5);background:var(--card2);transform:translateY(-3px);}
+  .video-thumb{width:52px;height:52px;border-radius:50%;background:var(--grad-orange);display:flex;align-items:center;justify-content:center;font-size:20px;}
+  .video-label{font-size:12px;color:var(--muted);font-weight:500;}
+  .brochure-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;}
+  .brochure-left{display:flex;align-items:center;gap:16px;}
+  .brochure-icon{width:52px;height:52px;border-radius:12px;background:rgba(242,101,45,0.15);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+  .brochure-title{font-size:15px;font-weight:700;margin-bottom:3px;}
+  .brochure-desc{font-size:12px;color:var(--muted);}
+  .btn-download{background:var(--grad-orange);color:#fff;border:none;padding:12px 26px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity .2s;white-space:nowrap;}
+  .btn-download:hover{opacity:.9;}
 
   @media(max-width:768px){
     .nav-links{display:none;}.mobile-menu{display:flex;}.nav{padding:12px 16px;}
@@ -133,6 +144,34 @@
         <div class="mgmt-price" data-en="Starts from 10,000 EGP" data-ar="يبدأ من 10,000 جنيه"><span data-en="/ month" data-ar="/ شهريًا">/ month</span></div>
       </div>
     </div>
+    <div class="brochure-box" style="margin-bottom:48px;">
+      <div class="brochure-left">
+        <div class="brochure-icon">📄</div>
+        <div>
+          <div class="brochure-title" data-en="Download Our Agency Profile" data-ar="حمّل بروفايل الشركة">Download Our Agency Profile</div>
+          <div class="brochure-desc" data-en="Full PDF overview of our services, vision, and mission" data-ar="نظرة شاملة PDF على خدماتنا ورؤيتنا ورسالتنا">Full PDF overview of our services, vision, and mission</div>
+        </div>
+      </div>
+      <a href="medical_E-marketing_profile.pdf" class="btn-download" target="_blank" data-en="Download PDF ⬇" data-ar="تحميل PDF ⬇">Download PDF ⬇</a>
+    </div>
+
+    <div class="section-label" data-en="See Our Work" data-ar="شاهد أعمالنا">See Our Work</div>
+    <div class="section-title" style="margin-bottom:24px;" data-en="Campaigns in Action" data-ar="حملاتنا في العمل">Campaigns in Action</div>
+    <div class="video-grid" style="margin-bottom:48px;">
+      <a href="https://www.facebook.com/reel/1270453131869774" target="_blank" class="video-card">
+        <div class="video-thumb">▶️</div>
+        <div class="video-label" data-en="Watch on Facebook" data-ar="شاهد على فيسبوك">Watch on Facebook</div>
+      </a>
+      <a href="https://www.facebook.com/reel/846712697728567" target="_blank" class="video-card">
+        <div class="video-thumb">▶️</div>
+        <div class="video-label" data-en="Watch on Facebook" data-ar="شاهد على فيسبوك">Watch on Facebook</div>
+      </a>
+      <a href="https://www.facebook.com/reel/3467413423427857" target="_blank" class="video-card">
+        <div class="video-thumb">▶️</div>
+        <div class="video-label" data-en="Watch on Facebook" data-ar="شاهد على فيسبوك">Watch on Facebook</div>
+      </a>
+    </div>
+
     <div class="cta-box">
       <h2 data-en="Ready to Scale Your Practice?" data-ar="جاهز لتنمية عيادتك؟">Ready to Scale Your Practice?</h2>
       <p data-en="Book a free consultation and let's build a strategy that works for your specialty and budget." data-ar="احجز استشارة مجانية ولنبني استراتيجية تناسب تخصصك وميزانيتك.">Book a free consultation and let's build a strategy that works for your specialty and budget.</p>
