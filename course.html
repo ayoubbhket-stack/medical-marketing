@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-en="Medical Marketing Course" data-ar="كورس التسويق الطبي">Medical Marketing Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0e27;--navy:#1e3a8a;--navy-deep:#152b63;
+    --card:#141b3d;--card2:#1c2650;
+    --accent:#f2652d;--accent2:#ff7d40;
+    --text:#f5f5f8;--muted:#93a0c4;--border:#2a3563;
+    --grad:linear-gradient(135deg,#2141a3,#152b63);
+    --grad-orange:linear-gradient(135deg,#f2652d,#ed1c24);
+  }
+  html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  body.ar-mode{font-family:'Tajawal',sans-serif;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,14,39,0.96);backdrop-filter:blur(10px);z-index:50;}
+  .nav-left{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo{height:40px;overflow:hidden;}
+  .nav-logo img{height:100%;display:block;}
+  .nav-links{display:flex;align-items:center;gap:4px;}
+  .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;transition:color .2s,background .2s;}
+  .nav-link:hover,.nav-link.active{color:var(--accent2);}
+  .nav-link:hover{background:rgba(255,255,255,0.06);}
+  .lang-btn{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:border-color .2s;}
+  .lang-btn:hover{border-color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .nav-cta{background:var(--grad-orange);color:#fff;font-size:13px;font-weight:600;padding:9px 20px;border-radius:8px;text-decoration:none;}
+  .mobile-menu{display:none;gap:8px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--border);}
+  .mobile-link{white-space:nowrap;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;background:var(--card);}
+  .mobile-link.active{color:var(--accent2);border:1px solid rgba(242,101,45,0.3);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .divider{height:1px;background:var(--border);}
+  .section{padding:56px 0;}
+  .section-label{font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
+  .section-title{font-size:26px;font-weight:700;margin-bottom:12px;}
+  .section-sub{font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+  .footer{text-align:center;padding:32px 24px;font-size:13px;color:var(--muted);border-top:1px solid var(--border);}
+  .footer span{color:var(--accent2);}
+  .wa-float{position:fixed;bottom:28px;left:28px;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,0.45);transition:transform .2s;z-index:98;}
+  [dir="rtl"] .wa-float{left:auto;right:28px;}
+
+  .hero{padding:60px 24px;background:var(--grad);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/svg%3E");}
+  .hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;position:relative;}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;margin-bottom:20px;}
+  .hero-title{font-size:36px;font-weight:800;margin-bottom:16px;line-height:1.2;letter-spacing:-0.02em;color:#fff;}
+  .hero-title span{color:var(--accent2);}
+  .hero-desc{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:28px;}
+  .hero-meta{display:flex;gap:12px;flex-wrap:wrap;}
+  .hero-meta-item{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,0.7);}
+  .hero-meta-item strong{color:#fff;}
+  .course-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;position:sticky;top:90px;}
+  .hero-price{font-size:36px;font-weight:800;background:var(--grad-orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
+  .hero-price-note{font-size:13px;color:var(--muted);margin-bottom:22px;}
+  .btn-enroll{display:block;width:100%;background:var(--grad-orange);color:#fff;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;transition:opacity .2s,transform .2s;margin-bottom:10px;}
+  .btn-enroll:hover{opacity:.9;transform:translateY(-2px);}
+  .btn-wa{display:block;width:100%;background:transparent;color:var(--text);border:1px solid var(--border);padding:13px;border-radius:12px;font-size:14px;font-weight:500;text-decoration:none;text-align:center;transition:border-color .2s;}
+  .btn-wa:hover{border-color:#25d366;}
+  .guarantee{font-size:12px;color:var(--muted);margin-top:12px;text-align:center;}
+
+  .instructor-grid{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;}
+  .instructor-photo{width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--border);}
+  .instructor-photo img{width:100%;display:block;object-fit:cover;}
+  .instructor-badge{display:inline-block;background:rgba(242,101,45,0.15);border:1px solid rgba(242,101,45,0.35);color:var(--accent2);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+  .instructor-name{font-size:24px;font-weight:700;margin-bottom:6px;}
+  .instructor-title{font-size:14px;color:var(--muted);margin-bottom:16px;}
+  .instructor-desc{font-size:14px;color:var(--muted);line-height:1.8;}
+  .instructor-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;}
+  .inst-stat{background:var(--card2);border-radius:10px;padding:14px;text-align:center;}
+  .inst-stat-num{font-size:20px;font-weight:700;background:var(--grad-orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .inst-stat-label{font-size:11px;color:var(--muted);margin-top:4px;}
+
+  .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .learn-item{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;}
+  .learn-icon{font-size:20px;flex-shrink:0;}
+  .learn-text{font-size:13px;color:var(--muted);line-height:1.6;}
+  .learn-text strong{color:var(--text);}
+
+  .includes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+  .include-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;}
+  .include-icon{font-size:28px;margin-bottom:8px;}
+  .include-title{font-size:13px;font-weight:600;margin-bottom:4px;}
+  .include-desc{font-size:12px;color:var(--muted);}
+
+  .feedback-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+  .feedback-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:transform .2s,border-color .2s;}
+  .feedback-card:hover{transform:translateY(-3px);border-color:rgba(242,101,45,0.4);}
+  .feedback-card img{width:100%;display:block;object-fit:cover;}
+
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:999;align-items:center;justify-content:center;}
+  .lightbox.active{display:flex;}
+  .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain;}
+  .lightbox-close{position:absolute;top:20px;right:24px;font-size:32px;color:#fff;cursor:pointer;}
+
+  @media(max-width:768px){
+    .nav-links{display:none;}.mobile-menu{display:flex;}.nav{padding:12px 16px;}
+    .hero-inner{grid-template-columns:1fr;}.course-card{position:static;}
+    .instructor-grid{grid-template-columns:1fr;text-align:center;}
+    .instructor-photo{max-width:220px;margin:0 auto;}
+    .learn-grid{grid-template-columns:1fr;}
+    .hero-title{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-left">
+    <div class="nav-logo"><img src="546444698_122104189293001685_7968348355915775637_n.jpg" alt="Medical E-Marketing Agency"></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+    <a href="course.html" class="nav-link active" data-en="Course" data-ar="الكورس">Course</a>
+    <a href="management.html" class="nav-link" data-en="Management" data-ar="الإدارة">Management</a>
+    <a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">العربية</button>
+    <a href="https://wa.me/201555227040" class="nav-cta" target="_blank" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+  <a href="course.html" class="mobile-link active" data-en="Course" data-ar="الكورس">Course</a>
+  <a href="management.html" class="mobile-link" data-en="Management" data-ar="الإدارة">Management</a>
+  <a href="contact.html" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge" data-en="🏥 MEDICAL MARKETING" data-ar="🏥 تسويق طبي">🏥 MEDICAL MARKETING</div>
+      <h1 class="hero-title" data-en='Medical Marketing<br><span>Course</span>' data-ar='كورس<br><span>التسويق الطبي</span>'>Medical Marketing<br><span>Course</span></h1>
+      <p class="hero-desc" data-en="A specialized course for healthcare professionals who want to grow their practice, attract more patients, and build a strong digital presence — taught by one of Egypt's top medical marketing experts." data-ar="كورس متخصص للمهنيين الطبيين الراغبين في تنمية عملهم، وجذب المزيد من المرضى، وبناء حضور رقمي قوي — يقدمه واحد من أفضل خبراء التسويق الطبي في مصر.">A specialized course for healthcare professionals who want to grow their practice, attract more patients, and build a strong digital presence — taught by one of Egypt's top medical marketing experts.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📍 <strong data-en="In-Person or Online" data-ar="حضوري أو أونلاين">In-Person or Online</strong></div>
+        <div class="hero-meta-item">⏰ <strong data-en="4 Hours/Session" data-ar="4 ساعات/محاضرة">4 Hours/Session</strong></div>
+        <div class="hero-meta-item">🎥 <strong data-en="Full Recordings" data-ar="تسجيلات كاملة">Full Recordings</strong></div>
+        <div class="hero-meta-item">💰 <strong data-en="Money-Back Guarantee" data-ar="ضمان استرداد المال">Money-Back Guarantee</strong></div>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="hero-price">5,000 EGP</div>
+      <div class="hero-price-note" data-en="Full course — all sessions included" data-ar="الكورس كامل — جميع المحاضرات شاملة">Full course — all sessions included</div>
+      <a href="https://wa.me/201555227040?text=I want to enroll in the Medical Marketing Course" class="btn-enroll" target="_blank" data-en="Enroll Now 🎓" data-ar="سجل الآن 🎓">Enroll Now 🎓</a>
+      <a href="https://wa.me/201555227040" class="btn-wa" target="_blank" data-en="💬 Ask a Question" data-ar="💬 اسأل سؤال">💬 Ask a Question</a>
+      <div class="guarantee" data-en="💰 Full money-back guarantee after course completion" data-ar="💰 ضمان استرداد كامل بعد إتمام الكورس">💰 Full money-back guarantee after course completion</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="Your Instructor" data-ar="محاضر الكورس">Your Instructor</div>
+    <div class="instructor-grid">
+      <div class="instructor-photo">
+        <img src="Screenshot_2026-07-11_110352.png" alt="Eng. Hussien Zaki">
+      </div>
+      <div>
+        <div class="instructor-badge" data-en="CEO & Lead Instructor" data-ar="الرئيس التنفيذي والمحاضر الرئيسي">CEO & Lead Instructor</div>
+        <div class="instructor-name">Eng. Hussien Zaki</div>
+        <div class="instructor-title" data-en="E-Marketing Specialist — Medical Division" data-ar="أخصائي تسويق إلكتروني — القسم الطبي">E-Marketing Specialist — Medical Division</div>
+        <div class="instructor-desc" data-en="With over 13 years of hands-on experience in medical e-marketing, Eng. Hussien Zaki has helped hundreds of doctors, clinics, and hospitals build their digital presence and grow their patient base. His teaching style is practical, clear, and results-focused." data-ar="بخبرة تزيد عن 13 عامًا في التسويق الطبي الإلكتروني، ساعد المهندس حسين ذكي مئات الأطباء والعيادات والمستشفيات على بناء حضورهم الرقمي وزيادة قاعدة مرضاهم. أسلوبه في التدريس عملي وواضح ويركز على النتائج.">With over 13 years of hands-on experience in medical e-marketing, Eng. Hussien Zaki has helped hundreds of doctors, clinics, and hospitals build their digital presence and grow their patient base. His teaching style is practical, clear, and results-focused.</div>
+        <div class="instructor-stats">
+          <div class="inst-stat"><div class="inst-stat-num">13+</div><div class="inst-stat-label" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</div></div>
+          <div class="inst-stat"><div class="inst-stat-num">100+</div><div class="inst-stat-label" data-en="Students Trained" data-ar="طالب تم تدريبه">Students Trained</div></div>
+          <div class="inst-stat"><div class="inst-stat-num">4⭐</div><div class="inst-stat-label" data-en="Avg. Rating" data-ar="متوسط التقييم">Avg. Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="Course Content" data-ar="محتوى الكورس">Course Content</div>
+    <div class="section-title" data-en="What You'll Learn" data-ar="هتتعلم إيه">What You'll Learn</div>
+    <div class="section-sub" data-en="8 practical modules covering everything you need to market your medical practice effectively." data-ar="8 وحدات عملية تغطي كل ما تحتاجه لتسويق عيادتك الطبية بفعالية.">8 practical modules covering everything you need to market your medical practice effectively.</div>
+    <div class="learn-grid">
+      <div class="learn-item"><div class="learn-icon">🎯</div><div class="learn-text" data-en="<strong>Marketing Strategy</strong><br>Build the right marketing plan tailored to your medical specialty." data-ar="<strong>الخطة التسويقية</strong><br>حدد الخطة التسويقية المناسبة لتخصصك."><strong>Marketing Strategy</strong><br>Build the right marketing plan tailored to your medical specialty.</div></div>
+      <div class="learn-item"><div class="learn-icon">💰</div><div class="learn-text" data-en="<strong>Budget Planning</strong><br>Set the right marketing budget and allocate it effectively." data-ar="<strong>الميزانية</strong><br>حدد الباجت التسويقية المناسبة وقسّمها بفعالية."><strong>Budget Planning</strong><br>Set the right marketing budget and allocate it effectively.</div></div>
+      <div class="learn-item"><div class="learn-icon">✍️</div><div class="learn-text" data-en="<strong>Content Writing</strong><br>Write professional content that attracts and converts the right patients." data-ar="<strong>كتابة المحتوى</strong><br>اكتب محتوى احترافي يجذب المريض المستهدف."><strong>Content Writing</strong><br>Write professional content that attracts and converts the right patients.</div></div>
+      <div class="learn-item"><div class="learn-icon">👥</div><div class="learn-text" data-en="<strong>Audience Targeting</strong><br>Target the right patients for your specialty using advanced ad tools." data-ar="<strong>الاستهداف</strong><br>استهدف المريض المناسب لتخصصك بأدوات إعلانية متقدمة."><strong>Audience Targeting</strong><br>Target the right patients for your specialty using advanced ad tools.</div></div>
+      <div class="learn-item"><div class="learn-icon">📢</div><div class="learn-text" data-en="<strong>Ad Campaigns</strong><br>Create and launch campaigns that deliver real, measurable results." data-ar="<strong>الحملات الإعلانية</strong><br>أنشئ حملات تحقق نتائج فعلية وقابلة للقياس."><strong>Ad Campaigns</strong><br>Create and launch campaigns that deliver real, measurable results.</div></div>
+      <div class="learn-item"><div class="learn-icon">📊</div><div class="learn-text" data-en="<strong>Campaign Analysis</strong><br>Analyze your ads, identify weaknesses, and optimize performance." data-ar="<strong>تحليل الحملات</strong><br>حلل إعلاناتك وحدد نقاط الضعف لتحسين الأداء."><strong>Campaign Analysis</strong><br>Analyze your ads, identify weaknesses, and optimize performance.</div></div>
+      <div class="learn-item"><div class="learn-icon">🔍</div><div class="learn-text" data-en="<strong>SEO & Keywords</strong><br>Choose the right keywords and appear in top search results on Google." data-ar="<strong>السيو والكلمات المفتاحية</strong><br>اختر الكلمات المفتاحية المناسبة وتصدّر نتائج البحث."><strong>SEO & Keywords</strong><br>Choose the right keywords and appear in top search results on Google.</div></div>
+      <div class="learn-item"><div class="learn-icon">🧠</div><div class="learn-text" data-en="<strong>Patient Behavior</strong><br>Understand how patients in Egypt search and make healthcare decisions." data-ar="<strong>سلوك المريض</strong><br>افهم سلوك المريض المصري ورحلته لاتخاذ القرار."><strong>Patient Behavior</strong><br>Understand how patients in Egypt search and make healthcare decisions.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="What's Included" data-ar="ماذا يشمل الكورس">What's Included</div>
+    <div class="section-title" data-en="Everything You Need to Succeed" data-ar="كل ما تحتاجه للنجاح">Everything You Need to Succeed</div>
+    <div class="includes-grid">
+      <div class="include-item"><div class="include-icon">📍</div><div class="include-title" data-en="Flexible Attendance" data-ar="حضور مرن">Flexible Attendance</div><div class="include-desc" data-en="In-person or online from anywhere" data-ar="حضوري أو أونلاين من أي مكان">In-person or online from anywhere</div></div>
+      <div class="include-item"><div class="include-icon">🎥</div><div class="include-title" data-en="Full Recordings" data-ar="تسجيلات كاملة">Full Recordings</div><div class="include-desc" data-en="Full video recording after every session" data-ar="تسجيل كامل بعد كل محاضرة">Full video recording after every session</div></div>
+      <div class="include-item"><div class="include-icon">💬</div><div class="include-title" data-en="Q&A Support" data-ar="دعم بالأسئلة">Q&A Support</div><div class="include-desc" data-en="Questions answered during and after lectures" data-ar="الإجابة على الأسئلة أثناء وبعد المحاضرات">Questions answered during and after lectures</div></div>
+      <div class="include-item"><div class="include-icon">💰</div><div class="include-title" data-en="Money-Back Guarantee" data-ar="ضمان استرداد المال">Money-Back Guarantee</div><div class="include-desc" data-en="Full refund after completing the course" data-ar="استرداد كامل بعد إتمام الكورس">Full refund after completing the course</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="Student Reviews" data-ar="آراء الطلاب">Student Reviews</div>
+    <div class="section-title" data-en="What Our Students Say" data-ar="آراء طلابنا">What Our Students Say</div>
+    <div class="section-sub" data-en="Real feedback from real students who completed the Medical Marketing Course." data-ar="آراء حقيقية من طلاب حقيقيين أتموا كورس التسويق الطبي.">Real feedback from real students who completed the Medical Marketing Course.</div>
+    <div class="feedback-grid">
+      <div class="feedback-card" onclick="openLightbox('676857845_984874774066088_4064244984170518599_n.jpg')"><img src="676857845_984874774066088_4064244984170518599_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('678588016_984874737399425_69818252354032100_n.jpg')"><img src="678588016_984874737399425_69818252354032100_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('679018750_984874987399400_5748765202396013530_n.jpg')"><img src="679018750_984874987399400_5748765202396013530_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('679098537_984874700732762_2196862347198316035_n.jpg')"><img src="679098537_984874700732762_2196862347198316035_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('695064487_999988609221371_6942680379300947195_n.jpg')"><img src="695064487_999988609221371_6942680379300947195_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('696093696_999988639221368_1863851331970706658_n.jpg')"><img src="696093696_999988639221368_1863851331970706658_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('724010527_1030026602884238_1582918437888477242_n.jpg')"><img src="724010527_1030026602884238_1582918437888477242_n.jpg" alt="Feedback" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section" style="text-align:center;">
+    <div class="section-label" data-en="Ready to Start?" data-ar="جاهز تبدأ؟">Ready to Start?</div>
+    <div class="section-title" data-en="Join the Medical Marketing Course Today" data-ar="انضم لكورس التسويق الطبي اليوم">Join the Medical Marketing Course Today</div>
+    <div class="section-sub" data-en="Limited seats available. Secure your spot now." data-ar="الأماكن محدودة. احجز مكانك الآن.">Limited seats available. Secure your spot now.</div>
+    <a href="https://wa.me/201555227040?text=I want to enroll in the Medical Marketing Course" class="btn-enroll" style="max-width:300px;margin:0 auto;" target="_blank" data-en="Enroll Now — 5,000 EGP 🎓" data-ar="سجل الآن — 5000 جنيه 🎓">Enroll Now — 5,000 EGP 🎓</a>
+    <div class="guarantee" style="margin-top:16px;" data-en="💰 Full money-back guarantee after course completion" data-ar="💰 ضمان استرداد كامل بعد إتمام الكورس">💰 Full money-back guarantee after course completion</div>
+  </div>
+</div>
+
+<footer class="footer">© 2026 <span data-en="Medical E-Marketing Agency" data-ar="ميديكال إي ماركتنج أجنسي">Medical E-Marketing Agency</span> — <span data-en="All Rights Reserved" data-ar="جميع الحقوق محفوظة">All Rights Reserved</span></footer>
+<a class="wa-float" href="https://wa.me/201555227040" target="_blank">💬</a>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">✕</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script src="lang.js"></script>
+<script>
+function openLightbox(src){ document.getElementById('lightbox-img').src=src; document.getElementById('lightbox').classList.add('active'); }
+function closeLightbox(){ document.getElementById('lightbox').classList.remove('active'); }
+</script>
+</body>
+</html>

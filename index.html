@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-en="Medical E-Marketing Agency" data-ar="ميديكال إي ماركتنج أجنسي">Medical E-Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0e27;--navy:#1e3a8a;--navy-deep:#152b63;
+    --card:#141b3d;--card2:#1c2650;
+    --accent:#f2652d;--accent2:#ff7d40;
+    --text:#f5f5f8;--muted:#93a0c4;--border:#2a3563;
+    --grad:linear-gradient(135deg,#2141a3,#152b63);
+    --grad-orange:linear-gradient(135deg,#f2652d,#ed1c24);
+  }
+  html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  body.ar-mode{font-family:'Tajawal',sans-serif;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,14,39,0.96);backdrop-filter:blur(10px);z-index:50;}
+  .nav-left{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo{height:40px;overflow:hidden;}
+  .nav-logo img{height:100%;display:block;}
+  .nav-links{display:flex;align-items:center;gap:4px;}
+  .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;transition:color .2s,background .2s;}
+  .nav-link:hover,.nav-link.active{color:var(--accent2);}
+  .nav-link:hover{background:rgba(255,255,255,0.06);}
+  .lang-btn{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:border-color .2s;}
+  .lang-btn:hover{border-color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .nav-cta{background:var(--grad-orange);color:#fff;font-size:13px;font-weight:600;padding:9px 20px;border-radius:8px;text-decoration:none;}
+  .nav-cta:hover{opacity:.9;}
+  .mobile-menu{display:none;gap:8px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--border);}
+  .mobile-link{white-space:nowrap;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;background:var(--card);}
+  .mobile-link.active{color:var(--accent2);border:1px solid rgba(242,101,45,0.3);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .divider{height:1px;background:var(--border);}
+  .section{padding:56px 0;}
+  .section-label{font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
+  .section-title{font-size:26px;font-weight:700;margin-bottom:12px;}
+  .section-sub{font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+  .btn-primary{background:var(--grad-orange);color:#fff;border:none;padding:13px 32px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity .2s,transform .2s;}
+  .btn-primary:hover{opacity:.9;transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:13px 32px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,background .2s;}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+  .footer{text-align:center;padding:32px 24px;font-size:13px;color:var(--muted);border-top:1px solid var(--border);}
+  .footer span{color:var(--accent2);}
+  .wa-float{position:fixed;bottom:28px;left:28px;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,0.45);transition:transform .2s;z-index:98;}
+  .wa-float:hover{transform:scale(1.1);}
+  [dir="rtl"] .wa-float{left:auto;right:28px;}
+
+  .hero{text-align:center;padding:90px 24px 70px;background:var(--grad);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/svg%3E");}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:12px;font-weight:600;padding:6px 18px;border-radius:20px;margin-bottom:28px;position:relative;}
+  .hero-title{font-size:42px;font-weight:800;margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2;color:#fff;position:relative;}
+  .hero-title span{color:var(--accent2);}
+  .hero-sub{font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;position:relative;}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
+
+  .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .value-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 22px;}
+  .value-icon{width:44px;height:44px;border-radius:10px;background:rgba(242,101,45,0.15);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;}
+  .value-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+  .value-desc{font-size:13px;color:var(--muted);line-height:1.7;}
+
+  .services-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .service-pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px;}
+  .service-pill::before{content:'✓';color:var(--accent2);font-weight:700;flex-shrink:0;}
+
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 20px;text-align:center;}
+  .stat-num{font-size:26px;font-weight:800;background:var(--grad-orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:12px;color:var(--muted);margin-top:6px;}
+
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .mobile-menu{display:flex;}
+    .nav{padding:12px 16px;}
+    .hero-title{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-left">
+    <div class="nav-logo"><img src="546444698_122104189293001685_7968348355915775637_n.jpg" alt="Medical E-Marketing Agency"></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active" data-en="Home" data-ar="الرئيسية">Home</a>
+    <a href="course.html" class="nav-link" data-en="Course" data-ar="الكورس">Course</a>
+    <a href="management.html" class="nav-link" data-en="Management" data-ar="الإدارة">Management</a>
+    <a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">العربية</button>
+    <a href="https://wa.me/201555227040" class="nav-cta" target="_blank" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="mobile-link active" data-en="Home" data-ar="الرئيسية">Home</a>
+  <a href="course.html" class="mobile-link" data-en="Course" data-ar="الكورس">Course</a>
+  <a href="management.html" class="mobile-link" data-en="Management" data-ar="الإدارة">Management</a>
+  <a href="contact.html" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-badge" data-en="✦ Egypt's Leading Medical Marketing Agency" data-ar="✦ الوكالة الرائدة في التسويق الطبي بمصر">✦ Egypt's Leading Medical Marketing Agency</div>
+  <h1 class="hero-title" data-en='Empowering <span>Medical Brands</span> to Grow' data-ar='نمكّن <span>العلامات التجارية الطبية</span> من النمو'>Empowering <span>Medical Brands</span> to Grow</h1>
+  <p class="hero-sub" data-en="We help doctors, clinics, and hospitals build powerful digital marketing strategies that attract more patients and grow their practice." data-ar="نساعد الأطباء والعيادات والمستشفيات على بناء استراتيجيات تسويق رقمي قوية تجذب المزيد من المرضى وتنمي عملهم.">We help doctors, clinics, and hospitals build powerful digital marketing strategies that attract more patients and grow their practice.</p>
+  <div class="cta-row">
+    <a href="course.html" class="btn-primary" data-en="Explore Our Course" data-ar="اكتشف الكورس">Explore Our Course</a>
+    <a href="https://wa.me/201555227040" class="btn-ghost" target="_blank" data-en="Talk to Us" data-ar="تواصل معنا">Talk to Us</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">13+</div><div class="stat-label" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">100+</div><div class="stat-label" data-en="Students Trained" data-ar="طالب تم تدريبه">Students Trained</div></div>
+      <div class="stat"><div class="stat-num">9</div><div class="stat-label" data-en="Services Offered" data-ar="خدمات مقدمة">Services Offered</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="Who We Are" data-ar="من نحن">Who We Are</div>
+    <div class="section-title" data-en="About Medical E-Marketing Agency" data-ar="عن ميديكال إي ماركتنج أجنسي">About Medical E-Marketing Agency</div>
+    <div class="section-sub" data-en="A leading company specializing in medical e-marketing, committed to delivering high-quality solutions and services to our clients. With years of experience, we have established a reputation for excellence and innovation." data-ar="شركة رائدة متخصصة في التسويق الطبي الإلكتروني، ملتزمة بتقديم حلول وخدمات عالية الجودة لعملائنا. باستطاعتنا خبرة سنوات طويلة، أسسنا سمعة قوية في التميز والابتكار.">A leading company specializing in medical e-marketing, committed to delivering high-quality solutions and services to our clients. With years of experience, we have established a reputation for excellence and innovation.</div>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <div class="value-title" data-en="Our Vision" data-ar="رؤيتنا">Our Vision</div>
+        <div class="value-desc" data-en="To be the preferred partner for businesses worldwide by continuously advancing our expertise, technology, and customer-centric approach." data-ar="أن نكون الشريك المفضل للشركات حول العالم من خلال التطوير المستمر لخبراتنا وتقنياتنا ونهجنا الذي يركز على العميل.">To be the preferred partner for businesses worldwide by continuously advancing our expertise, technology, and customer-centric approach.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚀</div>
+        <div class="value-title" data-en="Our Mission" data-ar="مهمتنا">Our Mission</div>
+        <div class="value-desc" data-en="To provide innovative and reliable solutions that meet the evolving needs of our clients while maintaining the highest standards of integrity and professionalism." data-ar="تقديم حلول مبتكرة وموثوقة تلبي الاحتياجات المتطورة لعملائنا مع الحفاظ على أعلى معايير النزاهة والاحترافية.">To provide innovative and reliable solutions that meet the evolving needs of our clients while maintaining the highest standards of integrity and professionalism.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💎</div>
+        <div class="value-title" data-en="Our Values" data-ar="قيمنا">Our Values</div>
+        <div class="value-desc" data-en="Integrity, Innovation, Quality, Customer Satisfaction, and Sustainability guide everything we do — every day, for every client." data-ar="النزاهة، الابتكار، الجودة، رضا العملاء، والاستدامة توجه كل ما نقوم به — كل يوم، لكل عميل.">Integrity, Innovation, Quality, Customer Satisfaction, and Sustainability guide everything we do — every day, for every client.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="What We Do" data-ar="ماذا نقدم">What We Do</div>
+    <div class="section-title" data-en="Full-Service Medical Marketing" data-ar="خدمات تسويق طبي متكاملة">Full-Service Medical Marketing</div>
+    <div class="section-sub" data-en="From strategy to execution, we cover every aspect of your medical practice's digital presence." data-ar="من الاستراتيجية إلى التنفيذ، نغطي كل جانب من جوانب حضورك الرقمي الطبي.">From strategy to execution, we cover every aspect of your medical practice's digital presence.</div>
+    <div class="services-list">
+      <div class="service-pill" data-en="Marketing courses for the medical field" data-ar="كورسات تسويقية للمجال الطبي">Marketing courses for the medical field</div>
+      <div class="service-pill" data-en="Identity & branding creation" data-ar="إنشاء الهوية والعلامة التجارية">Identity & branding creation</div>
+      <div class="service-pill" data-en="Social media designs for all platforms" data-ar="تصاميم سوشيال ميديا لجميع المنصات">Social media designs for all platforms</div>
+      <div class="service-pill" data-en="Printed designs" data-ar="تصاميم مطبوعة">Printed designs</div>
+      <div class="service-pill" data-en="Website development" data-ar="تصميم مواقع إلكترونية">Website development</div>
+      <div class="service-pill" data-en="Media production — video & photography" data-ar="إنتاج إعلامي — فيديو وتصوير">Media production — video & photography</div>
+      <div class="service-pill" data-en="Marketing plans" data-ar="خطط تسويقية">Marketing plans</div>
+      <div class="service-pill" data-en="Targeted advertising for all platforms" data-ar="إعلانات مستهدفة لجميع المنصات">Targeted advertising for all platforms</div>
+      <div class="service-pill" data-en="Google Ads" data-ar="إعلانات جوجل">Google Ads</div>
+      <div class="service-pill" data-en="SEO Optimization" data-ar="تحسين محركات البحث">SEO Optimization</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section" style="text-align:center;">
+    <div class="section-label" data-en="Ready to Grow?" data-ar="جاهز للنمو؟">Ready to Grow?</div>
+    <div class="section-title" data-en="Let's Build Your Medical Brand Together" data-ar="لنبني علامتك التجارية الطبية معًا">Let's Build Your Medical Brand Together</div>
+    <a href="https://wa.me/201555227040" class="btn-primary" target="_blank" data-en="Talk to Us on WhatsApp 💬" data-ar="تواصل معنا على واتساب 💬">Talk to Us on WhatsApp 💬</a>
+  </div>
+</div>
+
+<footer class="footer">© 2026 <span data-en="Medical E-Marketing Agency" data-ar="ميديكال إي ماركتنج أجنسي">Medical E-Marketing Agency</span> — <span data-en="All Rights Reserved" data-ar="جميع الحقوق محفوظة">All Rights Reserved</span></footer>
+<a class="wa-float" href="https://wa.me/201555227040" target="_blank">💬</a>
+
+<script src="lang.js"></script>
+</body>
+</html>

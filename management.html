@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-en="Campaign Management — Medical E-Marketing" data-ar="إدارة الحملات — ميديكال إي ماركتنج">Campaign Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0a0e27;--card:#141b3d;--card2:#1c2650;
+    --accent:#f2652d;--accent2:#ff7d40;
+    --text:#f5f5f8;--muted:#93a0c4;--border:#2a3563;
+    --grad:linear-gradient(135deg,#2141a3,#152b63);
+    --grad-orange:linear-gradient(135deg,#f2652d,#ed1c24);
+  }
+  html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  body.ar-mode{font-family:'Tajawal',sans-serif;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,14,39,0.96);backdrop-filter:blur(10px);z-index:50;}
+  .nav-left{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo{height:40px;overflow:hidden;}
+  .nav-logo img{height:100%;display:block;}
+  .nav-links{display:flex;align-items:center;gap:4px;}
+  .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;transition:color .2s,background .2s;}
+  .nav-link:hover,.nav-link.active{color:var(--accent2);}
+  .nav-link:hover{background:rgba(255,255,255,0.06);}
+  .lang-btn{background:var(--card);border:1px solid var(--border);color:var(--text);font-size:13px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:border-color .2s;}
+  .lang-btn:hover{border-color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .nav-cta{background:var(--grad-orange);color:#fff;font-size:13px;font-weight:600;padding:9px 20px;border-radius:8px;text-decoration:none;}
+  .mobile-menu{display:none;gap:8px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--border);}
+  .mobile-link{white-space:nowrap;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;background:var(--card);}
+  .mobile-link.active{color:var(--accent2);border:1px solid rgba(242,101,45,0.3);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .divider{height:1px;background:var(--border);}
+  .section{padding:56px 0;}
+  .section-label{font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
+  .section-title{font-size:26px;font-weight:700;margin-bottom:12px;}
+  .section-sub{font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+  .btn-primary{background:var(--grad-orange);color:#fff;border:none;padding:13px 32px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity .2s,transform .2s;}
+  .btn-primary:hover{opacity:.9;transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:13px 32px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,background .2s;}
+  .footer{text-align:center;padding:32px 24px;font-size:13px;color:var(--muted);border-top:1px solid var(--border);}
+  .footer span{color:var(--accent2);}
+  .wa-float{position:fixed;bottom:28px;left:28px;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,0.45);transition:transform .2s;z-index:98;}
+  [dir="rtl"] .wa-float{left:auto;right:28px;}
+
+  .hero{padding:70px 24px;text-align:center;background:var(--grad);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/svg%3E");}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;margin-bottom:20px;position:relative;}
+  .hero-title{font-size:38px;font-weight:800;margin-bottom:16px;letter-spacing:-0.02em;color:#fff;position:relative;}
+  .hero-title span{color:var(--accent2);}
+  .hero-sub{font-size:15px;color:rgba(255,255,255,0.8);max-width:520px;margin:0 auto 36px;line-height:1.7;position:relative;}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
+
+  .mgmt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:48px;}
+  .mgmt-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:border-color .2s,transform .2s;}
+  .mgmt-card:hover{border-color:rgba(242,101,45,0.4);transform:translateY(-3px);}
+  .mgmt-icon{font-size:32px;margin-bottom:14px;}
+  .mgmt-title{font-size:16px;font-weight:700;margin-bottom:8px;}
+  .mgmt-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+  .mgmt-price{font-size:20px;font-weight:700;background:var(--grad-orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .mgmt-price span{font-size:13px;color:var(--muted);font-weight:400;}
+  .cta-box{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px;text-align:center;}
+  .cta-box h2{font-size:24px;font-weight:700;margin-bottom:10px;}
+  .cta-box p{font-size:14px;color:var(--muted);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;}
+
+  @media(max-width:768px){
+    .nav-links{display:none;}.mobile-menu{display:flex;}.nav{padding:12px 16px;}
+    .hero-title{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-left">
+    <div class="nav-logo"><img src="546444698_122104189293001685_7968348355915775637_n.jpg" alt="Medical E-Marketing Agency"></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+    <a href="course.html" class="nav-link" data-en="Course" data-ar="الكورس">Course</a>
+    <a href="management.html" class="nav-link active" data-en="Management" data-ar="الإدارة">Management</a>
+    <a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">العربية</button>
+    <a href="https://wa.me/201555227040" class="nav-cta" target="_blank" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="mobile-link" data-en="Home" data-ar="الرئيسية">Home</a>
+  <a href="course.html" class="mobile-link" data-en="Course" data-ar="الكورس">Course</a>
+  <a href="management.html" class="mobile-link active" data-en="Management" data-ar="الإدارة">Management</a>
+  <a href="contact.html" class="mobile-link" data-en="Contact" data-ar="تواصل">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-badge" data-en="📊 CAMPAIGN MANAGEMENT" data-ar="📊 إدارة الحملات">📊 CAMPAIGN MANAGEMENT</div>
+  <h1 class="hero-title" data-en='We Run Your Ads.<br><span>You Focus on Patients.</span>' data-ar='نحن ندير إعلاناتك.<br><span>وأنت تركّز على مرضاك.</span>'>We Run Your Ads.<br><span>You Focus on Patients.</span></h1>
+  <p class="hero-sub" data-en="Full management of your medical practice's digital advertising across all major platforms — from strategy and setup to optimization and reporting." data-ar="إدارة كاملة للإعلانات الرقمية لعيادتك أو مستشفاك عبر جميع المنصات — من الاستراتيجية والإعداد إلى التحسين والتقارير.">Full management of your medical practice's digital advertising across all major platforms — from strategy and setup to optimization and reporting.</p>
+  <div class="cta-row">
+    <a href="https://wa.me/201555227040?text=I'm interested in Campaign Management for my medical practice" class="btn-primary" target="_blank" data-en="Book Free Consultation" data-ar="احجز استشارة مجانية">Book Free Consultation</a>
+    <a href="contact.html" class="btn-ghost" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label" data-en="Our Services" data-ar="خدماتنا">Our Services</div>
+    <div class="section-title" data-en="What's Included" data-ar="ماذا يشمل">What's Included</div>
+    <div class="section-sub" data-en="We handle everything from strategy to execution — tailored specifically for medical practices." data-ar="نتولى كل شيء من الاستراتيجية إلى التنفيذ — مصمم خصيصًا للممارسات الطبية.">We handle everything from strategy to execution — tailored specifically for medical practices.</div>
+    <div class="mgmt-grid">
+      <div class="mgmt-card">
+        <div class="mgmt-icon">📱</div>
+        <div class="mgmt-title" data-en="Social Media Advertising" data-ar="إعلانات السوشيال ميديا">Social Media Advertising</div>
+        <div class="mgmt-desc" data-en="Full management of Meta, TikTok & Snapchat campaigns targeting the right patients with the right message." data-ar="إدارة كاملة لحملات ميتا وتيك توك وسناب شات تستهدف المرضى المناسبين بالرسالة المناسبة.">Full management of Meta, TikTok & Snapchat campaigns targeting the right patients with the right message.</div>
+        <div class="mgmt-price" data-en="Starts from 10,000 EGP" data-ar="يبدأ من 10,000 جنيه"><span data-en="/ month" data-ar="/ شهريًا">/ month</span></div>
+      </div>
+      <div class="mgmt-card">
+        <div class="mgmt-icon">🔍</div>
+        <div class="mgmt-title" data-en="Google Ads Management" data-ar="إدارة إعلانات جوجل">Google Ads Management</div>
+        <div class="mgmt-desc" data-en="Search, Display & YouTube campaigns to help patients find your clinic exactly when they're searching." data-ar="حملات بحث وعرض ويوتيوب لمساعدة المرضى في إيجاد عيادتك بالضبط عند بحثهم.">Search, Display & YouTube campaigns to help patients find your clinic exactly when they're searching.</div>
+        <div class="mgmt-price" data-en="Starts from 10,000 EGP" data-ar="يبدأ من 10,000 جنيه"><span data-en="/ month" data-ar="/ شهريًا">/ month</span></div>
+      </div>
+      <div class="mgmt-card">
+        <div class="mgmt-icon">⚙️</div>
+        <div class="mgmt-title" data-en="Full Account Management" data-ar="إدارة كاملة للحسابات">Full Account Management</div>
+        <div class="mgmt-desc" data-en="End-to-end management across every platform — with monthly reports, pixel tracking and conversion optimization." data-ar="إدارة شاملة عبر كل المنصات — مع تقارير شهرية وتتبع بيكسل وتحسين التحويلات.">End-to-end management across every platform — with monthly reports, pixel tracking and conversion optimization.</div>
+        <div class="mgmt-price" data-en="Starts from 10,000 EGP" data-ar="يبدأ من 10,000 جنيه"><span data-en="/ month" data-ar="/ شهريًا">/ month</span></div>
+      </div>
+    </div>
+    <div class="cta-box">
+      <h2 data-en="Ready to Scale Your Practice?" data-ar="جاهز لتنمية عيادتك؟">Ready to Scale Your Practice?</h2>
+      <p data-en="Book a free consultation and let's build a strategy that works for your specialty and budget." data-ar="احجز استشارة مجانية ولنبني استراتيجية تناسب تخصصك وميزانيتك.">Book a free consultation and let's build a strategy that works for your specialty and budget.</p>
+      <a href="https://wa.me/201555227040?text=I'm interested in Campaign Management for my medical practice" class="btn-primary" target="_blank" data-en="Book Free Consultation" data-ar="احجز استشارة مجانية">Book Free Consultation</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">© 2026 <span data-en="Medical E-Marketing Agency" data-ar="ميديكال إي ماركتنج أجنسي">Medical E-Marketing Agency</span> — <span data-en="All Rights Reserved" data-ar="جميع الحقوق محفوظة">All Rights Reserved</span></footer>
+<a class="wa-float" href="https://wa.me/201555227040" target="_blank">💬</a>
+
+<script src="lang.js"></script>
+</body>
+</html>
